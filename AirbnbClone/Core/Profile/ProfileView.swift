@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     var body: some View {
         VStack {
+            //profile login view
             VStack(alignment: .leading, spacing: 32) {
                 
                 VStack(alignment: .leading, spacing: 8) {
@@ -39,7 +40,15 @@ struct ProfileView: View {
                 }
                 .font(.caption)
             }
+            
+            VStack(spacing: 24) {
+                ProfileOptionRowView(image: "gear", title: "Settings")
+                ProfileOptionRowView(image: "gear", title: "Accessibility")
+                ProfileOptionRowView(image: "questionmark.circle", title: "Visit the help center")
+            }
+            .padding(.vertical)
         }
+        .padding()
     }
 }
 
