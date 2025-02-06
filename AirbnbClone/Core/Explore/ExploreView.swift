@@ -14,7 +14,7 @@ struct ExploreView: View {
             ScrollView {
                 SearchAndFilterBar()
                 
-                LazyVStack { 
+                LazyVStack {
                     ForEach(0 ... 10, id: \.self) { listing in
                         NavigationLink(value: listing) {
                             ListingItemView()
@@ -25,7 +25,14 @@ struct ExploreView: View {
                 }
             }
             .navigationDestination(for: Int.self) { listing in
-                ListingDetailView()
+                
+                if #available(iOS 16.0, *) {
+                    ListingDetailView()
+                        .toolbar(.hidden)
+                } else {
+                    ListingDetailView()
+                        .navigationBarHidden(true)
+                }
             }
         }
     }

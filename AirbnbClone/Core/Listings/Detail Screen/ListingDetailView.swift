@@ -9,11 +9,17 @@ import SwiftUI
 import MapKit
 
 struct ListingDetailView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             ScrollView {
-                ListingImageCarouseView()
-                    .frame(height: 320)
+                ZStack(alignment: .topLeading) {
+                    ListingImageCarouseView()
+                        .frame(height: 320)
+                    backButton()
+                }
                 
                 PropertyInfoView()
                 Divider()
@@ -33,10 +39,28 @@ struct ListingDetailView: View {
                 MapView()
                     .padding(.bottom, 72)
             }
+           
             .ignoresSafeArea()
             .padding(.bottom)
             BookingFooterView()
+            
         }
+    }
+    
+    func backButton() -> some View {
+        Button {
+            dismiss() 
+        } label: {
+            Image(systemName: "chevron.left")
+                .foregroundStyle(.black)
+                .background {
+                    Circle()
+                        .fill(.white)
+                        .frame(width: 32, height: 32)
+                }
+                .padding(32)
+        }
+        
     }
 }
 
