@@ -39,7 +39,7 @@ struct ListingDetailView: View {
                 MapView()
                     .padding(.bottom, 72)
             }
-           
+            .toolbarVisibility(.hidden, for: .tabBar)
             .ignoresSafeArea()
             .padding(.bottom)
             BookingFooterView()

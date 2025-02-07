@@ -31,6 +31,7 @@ struct ProfileView: View {
                         .background(.pink)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
+                
                 HStack {
                     Text("Don't have an account?")
                     
