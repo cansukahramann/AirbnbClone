@@ -56,9 +56,10 @@ struct ListingDetailView: View {
                 .background {
                     Circle()
                         .fill(.white)
-                        .frame(width: 32, height: 32)
+                        .frame(width: 40, height: 40)
                 }
                 .padding(32)
+                .padding()
         }
         
     }
