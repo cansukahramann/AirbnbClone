@@ -13,55 +13,60 @@ struct ListingDetailView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            ScrollView {
-                ZStack(alignment: .topLeading) {
-                    ListingImageCarouseView()
-                        .frame(height: 320)
-                    backButton()
+        GeometryReader { geo in
+            ZStack(alignment: .bottom) {
+                ScrollView {
+                    ZStack(alignment: .topLeading) {
+                        ListingImageCarouseView()
+                            .frame(height: 320)
+                        
+                        backButton()
+                            .padding(.top, geo.safeAreaInsets.top)
+                            .padding(.leading, 18)
+                    }
+                    
+                    PropertyInfoView()
+                    Divider()
+                    
+                    HostInfoView()
+                    Divider()
+                    
+                    FeaturesView()
+                    Divider()
+                    
+                    BedroomsView()
+                    Divider()
+                    
+                    AmenitiesView()
+                    Divider()
+                    
+                    MapView()
+                        .padding(.bottom, 72)
                 }
+                .toolbarVisibility(.hidden, for: .tabBar)
+                .ignoresSafeArea()
+                .padding(.bottom)
+                BookingFooterView()
                 
-                PropertyInfoView()
-                Divider()
-                
-                HostInfoView()
-                Divider()
-                
-                FeaturesView()
-                Divider()
-                
-                BedroomsView()
-                Divider()
-                
-                AmenitiesView()
-                Divider()
-                
-                MapView()
-                    .padding(.bottom, 72)
             }
-            .toolbarVisibility(.hidden, for: .tabBar)
-            .ignoresSafeArea()
-            .padding(.bottom)
-            BookingFooterView()
-            
         }
     }
     
     func backButton() -> some View {
         Button {
-            dismiss() 
+            dismiss()
+            print("clicked")
         } label: {
             Image(systemName: "chevron.left")
+                .frame(width: 100, height: 100)
                 .foregroundStyle(.black)
                 .background {
                     Circle()
                         .fill(.white)
-                        .frame(width: 40, height: 40)
+                        
                 }
-                .padding(32)
-                .padding()
+                .contentShape(Circle())
         }
-        
     }
 }
 
