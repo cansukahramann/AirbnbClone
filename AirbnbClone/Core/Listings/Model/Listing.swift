@@ -7,35 +7,37 @@
 
 import Foundation
 
-struct Listing: Identifiable, Codable {
-    let id: Int
+struct Listing: Identifiable, Codable, Hashable {
+    let id: String
     let ownerUid: String
     let ownerName: String
     let ownerImageUrl: String
     let numberOfBedrooms: Int
     let numberOfBathrooms: Int
-    let numberOFGuests: Int
+    let numberOfGuests: Int
     let numberOfBeds: Int
-    var pricePerNight: Int
     let latitude: Double
     let longitude: Double
     let address: String
     let city: String
     let state: String
     let title: String
+    let type: ListingType
+    var imageURLs: [String]
     var rating: Double
+    var pricePerNight: Int
     var features: [ListingFeatures]
     var amenities: [ListingAmenities]
-    let type: [ListingType]
+    var reviews: Int
 }
 
 enum ListingFeatures: Int, Codable, Identifiable, Hashable {
-    case selfChekIn
+    case selfCheckIn
     case superHost
     
     var imageName: String {
         switch self {
-        case .selfChekIn:
+        case .selfCheckIn:
             return "door.left.hand.open"
         case .superHost:
             return "medal"
@@ -44,7 +46,7 @@ enum ListingFeatures: Int, Codable, Identifiable, Hashable {
     
     var title: String {
         switch self {
-        case .selfChekIn:
+        case .selfCheckIn:
             return "Self check-in"
         case .superHost:
             return "Superhost"
@@ -53,7 +55,7 @@ enum ListingFeatures: Int, Codable, Identifiable, Hashable {
     
     var subTitle: String {
         switch self {
-        case .selfChekIn:
+        case .selfCheckIn:
             return "Check yourself in with the keypad."
         case .superHost:
             return "Superhosts are experienced, highly rated hosts who are commited to providing greate stars gor guests."
