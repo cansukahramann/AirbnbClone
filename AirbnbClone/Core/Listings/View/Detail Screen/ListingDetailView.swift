@@ -41,7 +41,7 @@ struct ListingDetailView: View {
                     AmenitiesView(listing: listing)
                     Divider()
                     
-                    MapView()
+                    MapView(listing: listing)
                         .padding(.bottom, 72)
                 }
                 .toolbarVisibility(.hidden, for: .tabBar)
