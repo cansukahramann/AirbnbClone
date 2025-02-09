@@ -8,25 +8,28 @@
 import SwiftUI
 
 struct PropertyInfoView: View {
+    
+    let listing: Listing
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Miami Villa")
+            Text(listing.title)
                 .font(.title)
                 .fontWeight(.semibold)
             
             VStack(alignment: .leading) {
                 HStack(spacing: 2) {
-                    StarRatingView()
+                    StarRatingView(rating: listing.rating)
                     
                     Text(" - ")
                     
-                    Text("28 reviews")
+                    Text("\(listing.reviews) reviews")
                         .underline()
                         .fontWeight(.semibold)
                 }
                 .foregroundStyle(.black)
                 
-                Text("Miami, Florida")
+                Text("\(listing.city), \(listing.state)")
             }
             .font(.caption)
         }
@@ -36,5 +39,5 @@ struct PropertyInfoView: View {
 }
 
 #Preview {
-    PropertyInfoView()
+    PropertyInfoView(listing: DeveloperPreview.shared.listings[0])
 }

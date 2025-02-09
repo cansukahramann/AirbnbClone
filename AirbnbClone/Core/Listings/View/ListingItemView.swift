@@ -9,11 +9,13 @@ import SwiftUI
 
 struct ListingItemView: View {
     
+    let listings: Listing
+    
     var body: some View {
         VStack {
             //images
             
-            ListingImageCarouseView()
+            ListingImageCarouseView(listing: listings)
                 .frame(height: 320)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             
@@ -26,7 +28,7 @@ struct ListingItemView: View {
     func detailInfo() -> some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
-                Text("Miami, Florida")
+                Text("\(listings.city), \(listings.state)")
                     .fontWeight(.semibold)
                     .foregroundStyle(.black)
                 
@@ -37,7 +39,7 @@ struct ListingItemView: View {
                     .foregroundStyle(.gray)
                 
                 HStack(spacing: 4) {
-                    Text("$567")
+                    Text("$\(listings.pricePerNight)")
                         .fontWeight(.semibold)
                     Text("night")
                 }
@@ -46,12 +48,12 @@ struct ListingItemView: View {
             
             Spacer()
             
-            StarRatingView()
-        }
+            StarRatingView(rating: listings.rating)
+        } 
         .font(.footnote)
     }
 }
 
 #Preview {
-    ListingItemView()
+    ListingItemView(listings: DeveloperPreview.shared.listings[0])
 }

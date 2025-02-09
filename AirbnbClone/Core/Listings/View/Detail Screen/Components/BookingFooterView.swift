@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct BookingFooterView: View {
+    
+    let listing: Listing
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading)  {
-                Text("$500")
+                Text("$\(listing.pricePerNight)")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 
@@ -44,5 +47,5 @@ struct BookingFooterView: View {
 }
 
 #Preview {
-    BookingFooterView()
+    BookingFooterView(listing: DeveloperPreview.shared.listings[0])
 }

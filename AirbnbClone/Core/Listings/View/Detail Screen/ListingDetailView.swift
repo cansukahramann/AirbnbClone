@@ -11,13 +11,14 @@ import MapKit
 struct ListingDetailView: View {
     
     @Environment(\.dismiss) var dismiss
+    let listing: Listing
     
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
                 ScrollView {
                     ZStack(alignment: .topLeading) {
-                        ListingImageCarouseView()
+                        ListingImageCarouseView(listing: listing)
                             .frame(height: 320)
                         
                         backButton()
@@ -25,19 +26,19 @@ struct ListingDetailView: View {
                             .padding(.leading, 18)
                     }
                     
-                    PropertyInfoView()
+                    PropertyInfoView(listing: listing)
                     Divider()
                     
-                    HostInfoView()
+                    HostInfoView(listing: listing)
                     Divider()
                     
-                    FeaturesView()
+                    FeaturesView(listing: listing)
                     Divider()
                     
-                    BedroomsView()
+                    BedroomsView(listing: listing)
                     Divider()
                     
-                    AmenitiesView()
+                    AmenitiesView(listing: listing)
                     Divider()
                     
                     MapView()
@@ -46,7 +47,7 @@ struct ListingDetailView: View {
                 .toolbarVisibility(.hidden, for: .tabBar)
                 .ignoresSafeArea()
                 .padding(.bottom)
-                BookingFooterView()
+                BookingFooterView(listing: listing)
                 
             }
         }
@@ -58,7 +59,7 @@ struct ListingDetailView: View {
             print("clicked")
         } label: {
             Image(systemName: "chevron.left")
-                .frame(width: 100, height: 100)
+                .frame(width: 40, height: 40)
                 .foregroundStyle(.black)
                 .background {
                     Circle()
@@ -71,7 +72,7 @@ struct ListingDetailView: View {
 }
 
 #Preview {
-    ListingDetailView()
+    ListingDetailView(listing: DeveloperPreview.shared.listings[0])
 }
 
 
