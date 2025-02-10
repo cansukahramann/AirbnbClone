@@ -20,7 +20,7 @@ struct SearchAndFilterBar: View {
                     .font(.footnote)
                     .fontWeight(.semibold)
                 
-                Text("Anywhere - Any week - Add guests")
+                Text("\(location.isEmpty ? "Anywhere -" : "") Any week - Add guests")
                     .font(.caption2)
                     .foregroundStyle(.gray)
             }
