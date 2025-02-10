@@ -202,7 +202,7 @@ class DeveloperPreview {
               state: "California",
               title: "melanie bootiful",
               type: .townhouse,
-              imageURLs: ["listing3.4","listing3.","listing3.2", "listing3.1"],
+              imageURLs: ["listing3.4","listing3.3","listing3.2", "listing3.1"],
               rating: 4.4,
               pricePerNight: 780,
               features: [.selfCheckIn, .superHost],
